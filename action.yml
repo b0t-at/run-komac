@@ -52,7 +52,11 @@ runs:
         fi
         tar -xzf komac.tar.gz && rm komac.tar.gz
         mkdir -p $HOME/.local/bin
-        mv KomacPortable-linux-x64 $HOME/.local/bin/komac
+        if [ "$version" = "nightly" ]; then
+          mv komac $HOME/.local/bin/komac
+        else
+          mv KomacPortable-linux-x64 $HOME/.local/bin/komac
+        fi
         chmod +x $HOME/.local/bin/komac
         echo "$HOME/.local/bin" >> $GITHUB_PATH
 
